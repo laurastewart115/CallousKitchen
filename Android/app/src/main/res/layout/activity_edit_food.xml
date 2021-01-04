@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Author: Laura Stewart -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container"
+    tools:context=".EditFoodActivity"
+    >
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/bgColor"
+    >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:background="?attr/bgColorLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/editFoodName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="?attr/textColor"
+            android:ems="10"
+            android:hint="food name"
+            android:inputType="textPersonName"
+            android:textSize="16sp"
+            android:textColor="?attr/textColor"
+            android:textColorHint="?attr/metaTextColor" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/editFoodQuantity"
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/textColor"
+                android:ems="10"
+                android:hint="quantity"
+                android:inputType="numberDecimal"
+                android:textSize="16sp"
+                android:textColor="?attr/textColor"
+                android:textColorHint="?attr/metaTextColor"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                />
+            <Spinner
+                android:id="@+id/spinnerUnits"
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:layout_height="match_parent"
+                android:textSize="16sp"
+                android:textColor="?attr/textColor"
+                android:backgroundTint="?attr/textColor"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editFoodExpiry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="?attr/textColor"
+            android:ems="10"
+            android:inputType="date"
+            android:textSize="16sp"
+            android:textColor="?attr/textColor"
+            android:focusable="false"
+            android:hint="expiry date"
+            android:textColorHint="?attr/metaTextColor"/>
+
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:textColor="?attr/textColor"
+            android:backgroundTint="?attr/textColor"/>
+
+        <Button
+            android:id="@+id/btnEditFoodItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/confirm"
+            android:textColor="?attr/textColor" />
+
+        <Button
+            android:id="@+id/btnCancelEditFood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/colorDarkBtn"
+            android:text="@string/cancel"
+            android:textColor="?attr/textColor" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="#fff"
+        app:itemTextColor="#fff"
+        app:menu="@menu/bottom_navigation_menu"
+        />
+</FrameLayout>

@@ -1,0 +1,166 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    color: white;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: white;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #00CF6F;
+    border-color: #00CF6F;
+}
+
+    .btn-primary:focus {
+        background-color: #00A257;
+    }
+
+    .btn-primary:hover {
+        background-color: #00A257;
+    }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: black;
+}
+
+.Nav-LeftText {
+    padding-right: 1rem;
+}
+
+
+.favStar {
+    width: 25px;
+    height: 25px;
+}
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+    background-color: red;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+    color: whitesmoke;
+    background-color: #323232;
+}
+
+body {
+    /* Margin bottom by footer height */
+    background-color: #323232;
+    color: whitesmoke;
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+/*Custom Css*/
+.form-control {
+    background-color: dimgrey;
+    color: whitesmoke;
+    border-color: black;
+}
+
+.modal-body {
+    background-color: #323232;
+}
+
+.modal-header, .modal-footer {
+    background-color: #323232;
+}
+
+.logo {
+    width: 10%;
+    height: auto;
+}
+.foodRow {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border-bottom: 0.1rem solid black;
+}
+
+.expiringSoon{
+    color:gold;
+}
+.expriringCritical{
+    color:red;
+}
+.form-control::-webkit-input-placeholder {
+    color: lightgray;
+}
+
+
+/*Begin Recipes*/
+.Ingred0 {
+}
+
+.Ingred1 {
+    color: gold;
+}
+
+.Ingred2 {
+    color: greenyellow;
+}
+
+
+
+.recipeRow {
+    background-color: dimgray;
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+.recipeImage {
+    max-height: 500px;
+    height:90%;
+    width:auto;
+    display:block
+}
+
+/*End Recipies*/
+/*Custom Css*/

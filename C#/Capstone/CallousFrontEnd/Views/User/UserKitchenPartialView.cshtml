@@ -1,0 +1,173 @@
+﻿@*
+    Author: Peter
+*@
+@model List<AccountService.SerializableKitchen>
+@{
+    string[] StorageTypes = { "Fridge", "Freezer", "Pantry", "Cupboard", "Cellar", "Other" };
+
+}
+<div class="row">
+    <input type="text" class="form-control" placeholder="Search" id="tbSearchbar" />
+</div>
+<div class="row">
+    <button class="btn btn-secondary btn-sm" id="btnName">Name</button>
+    <button class="btn btn-secondary btn-sm" id="btnCount">Quantity</button>
+    <button class="btn btn-secondary btn-sm" id="btnClassifier">Quantity Classifier</button>
+    <button class="btn btn-secondary btn-sm" id="btnExpDate">Expiry Date</button>
+    <button class="btn btn-secondary btn-sm" id="btnFav">Favourite</button>
+</div>
+<div class="row"></div>
+<input type="hidden" id="isVegan" value="@ViewBag.isVegan" />
+<input type="hidden" id="isVeg" value="@ViewBag.isVeg" />
+@if (Model.Count != 0)
+{
+    <div class="container-fluid">
+        @*   @foreach (var kitchen in Model) *@
+        @if (Model[0].Inventory.Count() != 0)
+        {
+            Model[0].Inventory = Model[0].Inventory.OrderByDescending(x => x.Favourite).ToArray();
+            @*hardcoded amount for now, TODO: Change it*@
+            @for (int i = 0; i < StorageTypes.Length; i++)
+            @* change this! *@
+            {
+
+                @if (Model[0].Inventory.Where(x => x.Storage == StorageTypes[i]).Count() != 0)
+                {
+                    <div class="row">
+                        <h4><em>@Model[0].Inventory.Where(x => x.Storage == StorageTypes[i]).FirstOrDefault().Storage</em></h4>
+                    </div>
+                }
+
+
+
+                <div id="@StorageTypes[i]">
+
+                    @foreach (var food in Model[0].Inventory.Where(x => x.Storage == StorageTypes[i]))
+                    {
+                        <div class="foodRow row container" data-foodName="@food.Name.ToLower()" data-foodCount="@food.Quantity" data-foodDate="@food.ExpiryDate" data-foodFav="@food.Favourite" data-foodClassifier="@food.QuantityClassifier">
+                            <div class="col-md-8 col-sm-8">
+                                <div class="row">
+                                    <div class="col-md-11 col-sm-8 col-10 nopadding">
+                                        <h5>@food.Name</h5>
+                                    </div>
+                                    <div class="col-md-1 col-sm-4 col-2">
+                                        @if (food.Favourite)
+                                        {
+                                            <img class="favStar align-middle" src="~/Assets/Icons/filledstar.png" />
+                                        }
+                                    </div>
+                                </div>
+                                <div class="row">@food.Quantity @food.QuantityClassifier</div>
+                                @if (food.ExpiryDate != null)
+                                {
+                                    string expiryString = "";
+                                    DateTime date2 = DateTime.Now.AddDays(3);
+                                    TimeSpan time = date2 - food.ExpiryDate.Value;
+
+                                    if (time.Days == 0)
+                                    {
+                                        expiryString = "expiringSoon";
+                                    }
+                                    else if (time.Days >= 0)
+                                    {
+                                        expiryString = "expriringCritical";
+
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                    <div class="row @expiryString">Expires: @food.ExpiryDate</div>
+                                }
+                            </div>
+
+                            <div class="col-md-3 col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary editFoodBtn" data-toggle="modal" data-target="#AddFood" data-food-Id="@food.Id" data-kitchen-Id="@Model[0].Id">Edit</button>
+                                        <button type="button" class="btn btn-primary eatFoodBtn" data-food-Id="@food.Id" data-vegan="@food.Vegan" data-veg="@food.Vegetarian">Eat</button>
+                                        <button type="button" class="btn btn-danger deleteFoodBtn" data-food-Id="@food.Id">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+
+        }
+        else
+        {
+            <div class="row"><em>You have no food, add some</em></div>
+
+        }
+        <div class="row">
+            @if (ViewBag.IsConfirmed != null)
+            {
+                @if (ViewBag.IsConfirmed)
+                {
+                    <button type="button" class="btn btn-primary addFoodBtn" data-toggle="modal" data-target="#AddFood" data-kitchen-Id="@Model[0].Id">Add Food</button>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-primary addFoodBtn" data-toggle="modal" data-target="#AddFood" data-kitchen-Id="@Model[0].Id" disabled>Add Food</button>
+                }
+
+            }
+        </div>
+
+
+    </div>
+
+}
+else
+{
+    <em>You have no kitchens, add one</em>
+}
+@*@<br />
+    <button type="button" id="AddKitchen" class="btn btn-primary" data-toggle="modal" data-target="#KithenModel">Add Kitchen</button>
+*@
+
+
+<div class="modal fade" role="dialog" id="AddFood">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="AddEditFoodBody">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" role="dialog" id="EatFood">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="EatFoodBody">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" role="dialog" id="KithenModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Kitchen</h5>
+            </div>
+            <div class="modal-body">
+
+                @{ Html.RenderPartial("AddEditKitchenPartial", new KitchenUser { UserId = ViewBag.UserId, kitchen = new Capstone.Classes.Kitchen() });}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript" src="~/js/User/UserKitchen.js"></script>
+
+

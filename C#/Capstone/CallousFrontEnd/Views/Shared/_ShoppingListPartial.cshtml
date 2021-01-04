@@ -1,0 +1,33 @@
+﻿@*
+    Author: Peter
+    Partial page for Shopping List modal
+*@
+@model List<AccountService.SerializableFood>
+<div class="container" id="shoppingListForm">
+    <form id="form0" asp-action="SetShoppingList" asp-controller="User" data-ajax-method="Post" method="post" data-ajax="true"
+          data-ajax-update="#shoppingResult" data-ajax-mode="replace">
+        <input type="hidden" value="@ViewBag.kID" name="kID" />
+
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            string qaunt = Model[i].Quantity + Model[i].QuantityClassifier;
+            <div class="row">
+                <div class="col-2">
+                    @Html.CheckBoxFor(x => Model[i].OnShoppingList, htmlAttributes: new { @class = "CBshopping" })
+                </div>
+                <div class="col-10">
+                    @Model[i].Name @qaunt
+                </div>
+            </div>
+        }
+        <button class="btn btn-sm btn-primary" type="submit">Save Changes</button>
+        <button class="btn btn-sm btn-danger" type="button" id="btnClearList">Clear</button>
+    </form>
+
+
+    <em class="row" id="shoppingResult"></em>
+
+
+
+</div>
+<script type="text/javascript" src="~/js/User/ShoppingList.js"></script>

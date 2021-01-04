@@ -1,0 +1,13 @@
+﻿@*
+    Author: Peter
+*@
+@{
+    ViewData["Title"] = "Account";
+}
+@model AccountService.SerializableUser
+<h1>Account: @Model.Email</h1>
+<div id="Kitchens">
+    @{ Html.RenderPartial("UserKitchenPartialView", Model.Kitchens.ToList());}
+
+
+</div>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Author: Laura Stewart -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/bgColor">
+
+    <Button
+        android:id="@+id/btnKitchen"
+        android:layout_width="390dp"
+        android:layout_height="78dp"
+        android:layout_margin="10dp"
+        android:backgroundTint="?attr/bgColorLight"
+        android:text="Button"
+        android:textAlignment="textStart"
+        android:textColor="?attr/textColor"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="67dp" />
+
+</LinearLayout>

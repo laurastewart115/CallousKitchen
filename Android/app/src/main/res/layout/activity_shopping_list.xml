@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Author: Laura Stewart -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container"
+    android:background="?attr/bgColor"
+    tools:context=".ShoppingListActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="56dp">
+        <EditText
+            android:id="@+id/searchShoppingList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="?attr/textColor"
+            android:ems="10"
+            android:hint="search"
+            android:inputType="textPersonName"
+            android:textSize="16sp"
+            android:textColor="?attr/textColor"
+            android:textColorHint="?attr/metaTextColor"
+            android:layout_margin="5dp"
+            />
+        <Spinner
+            android:id="@+id/spinnerSortShopping"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="?attr/textColor"
+            android:backgroundTint="?attr/textColor"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/btnClearChecked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Clear Checked"
+            android:textColor="?attr/textColor" />
+
+        <ListView
+            android:id="@+id/listViewShoppingList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavShoppingList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="#fff"
+        app:itemTextColor="#fff"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</FrameLayout>

@@ -1,0 +1,21 @@
+﻿@*
+    Author: Peter
+
+*@
+@model CallousFrontEnd.Models.KitchenUser
+
+@using (Html.BeginForm("AddEditKitchen", "User", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.kitchen.Name, htmlAttributes: new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.kitchen.Name, htmlAttributes: new { @class = "form-control" })
+    </div>
+    @if (Model.kitchen.Id == 0)
+    {
+        <button type="submit" class="btn btn-primary">Add Kitchen</button>
+    }
+    else
+    {
+        <button type="submit" class="btn btn-primary">Edit Kitchen</button>
+    }
+}

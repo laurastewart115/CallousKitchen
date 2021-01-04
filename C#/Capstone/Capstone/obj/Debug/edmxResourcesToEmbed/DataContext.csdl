@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CallousHippoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Diet">
+    <Key>
+      <PropertyRef Name="DietId" />
+    </Key>
+    <Property Name="DietId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeitType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DietTags" Relationship="Self.FK_DietTag_Diet" FromRole="Diet" ToRole="DietTag" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_Diet" FromRole="Diet" ToRole="User" />
+  </EntityType>
+  <EntityType Name="DietTag">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TagId" Type="Int32" Nullable="false" />
+    <Property Name="DietId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Diet" Relationship="Self.FK_DietTag_Diet" FromRole="DietTag" ToRole="Diet" />
+    <NavigationProperty Name="Tag" Relationship="Self.FK_DietTag_Tag" FromRole="DietTag" ToRole="Tag" />
+  </EntityType>
+  <EntityType Name="ProductTag">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TagId" Type="Int32" Nullable="false" />
+    <Property Name="ProdId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Tag" Relationship="Self.FK_ProductTag_Tag" FromRole="ProductTag" ToRole="Tag" />
+    <NavigationProperty Name="Product" Relationship="CallousHippoModel.FK_ProductTag_Product" FromRole="ProductTag" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="TagId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TagName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DietTags" Relationship="Self.FK_DietTag_Tag" FromRole="Tag" ToRole="DietTag" />
+    <NavigationProperty Name="ProductTags" Relationship="Self.FK_ProductTag_Tag" FromRole="Tag" ToRole="ProductTag" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GuiltLevel" Type="Int32" Nullable="false" />
+    <Property Name="DietId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Diet" Relationship="Self.FK_User_Diet" FromRole="User" ToRole="Diet" />
+    <NavigationProperty Name="Inventories" Relationship="CallousHippoModel.FK_Inventory_User" FromRole="User" ToRole="Inventory" />
+  </EntityType>
+  <Association Name="FK_DietTag_Diet">
+    <End Role="Diet" Type="Self.Diet" Multiplicity="1" />
+    <End Role="DietTag" Type="Self.DietTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diet">
+        <PropertyRef Name="DietId" />
+      </Principal>
+      <Dependent Role="DietTag">
+        <PropertyRef Name="DietId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Diet">
+    <End Role="Diet" Type="Self.Diet" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diet">
+        <PropertyRef Name="DietId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="DietId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DietTag_Tag">
+    <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+    <End Role="DietTag" Type="Self.DietTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="TagId" />
+      </Principal>
+      <Dependent Role="DietTag">
+        <PropertyRef Name="TagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductTag_Tag">
+    <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+    <End Role="ProductTag" Type="Self.ProductTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="TagId" />
+      </Principal>
+      <Dependent Role="ProductTag">
+        <PropertyRef Name="TagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CallousHippoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Diets" EntityType="Self.Diet" />
+    <EntitySet Name="DietTags" EntityType="Self.DietTag" />
+    <EntitySet Name="ProductTags" EntityType="Self.ProductTag" />
+    <EntitySet Name="Tags" EntityType="Self.Tag" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_DietTag_Diet" Association="Self.FK_DietTag_Diet">
+      <End Role="Diet" EntitySet="Diets" />
+      <End Role="DietTag" EntitySet="DietTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Diet" Association="Self.FK_User_Diet">
+      <End Role="Diet" EntitySet="Diets" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DietTag_Tag" Association="Self.FK_DietTag_Tag">
+      <End Role="Tag" EntitySet="Tags" />
+      <End Role="DietTag" EntitySet="DietTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductTag_Tag" Association="Self.FK_ProductTag_Tag">
+      <End Role="Tag" EntitySet="Tags" />
+      <End Role="ProductTag" EntitySet="ProductTags" />
+    </AssociationSet>
+    <EntitySet Name="Inventories" EntityType="CallousHippoModel.Inventory" />
+    <AssociationSet Name="FK_Inventory_User" Association="CallousHippoModel.FK_Inventory_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Inventory" EntitySet="Inventories" />
+    </AssociationSet>
+    <EntitySet Name="Products" EntityType="CallousHippoModel.Product" />
+    <AssociationSet Name="FK_Inventory_Product" Association="CallousHippoModel.FK_Inventory_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Inventory" EntitySet="Inventories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductTag_Product" Association="CallousHippoModel.FK_ProductTag_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductTag" EntitySet="ProductTags" />
+    </AssociationSet>
+    <FunctionImport Name="AccountLogin" ReturnType="Collection(CallousHippoModel.AccountLogin_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CreateAccount" ReturnType="Collection(CallousHippoModel.CreateAccount_Result)">
+      <Parameter Name="Username" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="DietId" Mode="In" Type="Int32" />
+      <Parameter Name="GuiltLevel" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Inventory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProdId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="CallousHippoModel.FK_Inventory_User" FromRole="Inventory" ToRole="User" />
+    <NavigationProperty Name="Product" Relationship="CallousHippoModel.FK_Inventory_Product" FromRole="Inventory" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_Inventory_User">
+    <End Type="CallousHippoModel.User" Role="User" Multiplicity="1" />
+    <End Type="CallousHippoModel.Inventory" Role="Inventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Inventory">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProdId" />
+    </Key>
+    <Property Name="ProdId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Inventories" Relationship="CallousHippoModel.FK_Inventory_Product" FromRole="Product" ToRole="Inventory" />
+    <NavigationProperty Name="ProductTags" Relationship="CallousHippoModel.FK_ProductTag_Product" FromRole="Product" ToRole="ProductTag" />
+  </EntityType>
+  <Association Name="FK_Inventory_Product">
+    <End Type="CallousHippoModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="CallousHippoModel.Inventory" Role="Inventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProdId" />
+      </Principal>
+      <Dependent Role="Inventory">
+        <PropertyRef Name="ProdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductTag_Product">
+    <End Type="CallousHippoModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="CallousHippoModel.ProductTag" Role="ProductTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProdId" />
+      </Principal>
+      <Dependent Role="ProductTag">
+        <PropertyRef Name="ProdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="AccountLogin_Result">
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="Username" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="GuiltLevel" Nullable="false" />
+    <Property Type="Int32" Name="DietId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CreateAccount_Result">
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="Username" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="GuiltLevel" Nullable="false" />
+    <Property Type="Int32" Name="DietId" Nullable="false" />
+  </ComplexType>
+</Schema>

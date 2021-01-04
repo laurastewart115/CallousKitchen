@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">Callous Kitchen</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="kitchen_name">kitchen name</string>
+    <string name="email">Email</string>
+    <string name="create_one">Create One</string>
+    <string name="no_account">No account?</string>
+    <string name="login">login</string>
+    <string name="create_account">Create Account</string>
+    <string name="cancel">Cancel</string>
+    <string name="create">Create</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="vegan">Vegan</string>
+    <string name="allergy_please_specify">Other Allergy (please specify)</string>
+    <string name="account">Account</string>
+    <string name="dietary_restrictions">Dietary Restrictions</string>
+    <string name="allergy">allergy</string>
+    <string name="update_email">Update Email</string>
+    <string name="new_email">new email</string>
+    <string name="save_email">Save Email</string>
+    <string name="new_password">new password</string>
+    <string name="confirm_password">confirm password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="eggs">Egg</string>
+    <string name="fish">Fish</string>
+    <string name="shellfish">Shellfish</string>
+    <string name="gluten_intolerance">Gluten</string>
+    <string name="dairy">Dairy</string>
+    <string name="tree_nuts">Tree Nut</string>
+    <string name="peanuts">Peanut</string>
+    <string name="allergies_and_intolerances">Allergies and Intolerances</string>
+    <string name="title_activity_navigation_menu">Callous Kitchen</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="soy">Soy</string>
+    <string name="get_recipe_suggestions">Get Recipe Suggestions</string>
+    <string name="logout">Logout</string>
+    <string name="confirm">Confirm</string>
+
+    <string-array name="units">
+        <item>item</item>
+        <item>g</item>
+        <item>mg</item>
+        <item>kg</item>
+        <item>mL</item>
+        <item>L</item>
+        <item>oz</item>
+        <item>fl. oz.</item>
+        <item>gallon</item>
+        <item>lb</item>
+    </string-array>
+
+    <string-array name="sortingOptions">
+        <item>Recently Added</item>
+        <item>Expiring Soon</item>
+        <item>Running Low</item>
+        <item>Favourited</item>
+        <item>Oldest Added</item>
+        <item>Alphabetical</item>
+        <item>Greatest Quantity</item>
+        <item>Quantity Type</item>
+    </string-array>
+
+    <string-array name="sortingOptionsShopping">
+        <item>Default</item>
+        <item>Checked</item>
+        <item>Recently Added</item>
+        <item>Expiring Soon</item>
+        <item>Running Low</item>
+        <item>Favourited</item>
+        <item>Oldest Added</item>
+        <item>Alphabetical</item>
+        <item>Greatest Quantity</item>
+        <item>Quantity Type</item>
+    </string-array>
+</resources>

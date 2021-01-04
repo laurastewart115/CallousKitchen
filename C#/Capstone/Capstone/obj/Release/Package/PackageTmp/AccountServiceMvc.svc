@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Capstone.AccountServiceMvc" CodeBehind="AccountServiceMvc.svc.cs" %>

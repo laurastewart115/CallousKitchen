@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Author: Laura Stewart -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container"
+    tools:context=".SettingsActivity">
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:fillViewport="false"
+    android:background="?attr/bgColor">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="150dp">
+    <LinearLayout
+        android:id="@+id/linearLayoutLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:background="?attr/bgColorLight">
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/logout"
+            android:textColor="?attr/textColor" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayoutEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:background="?attr/bgColorLight">
+
+        <TextView
+            android:id="@+id/textViewEmailTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/update_email"
+            android:textColor="?attr/textColor"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editSettingEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="?attr/textColor"
+            android:ems="10"
+            android:hint="@string/new_email"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp"
+            android:textColor="?attr/textColor"
+            android:textColorHint="?attr/metaTextColor" />
+
+        <Button
+            android:id="@+id/btnSaveEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/save_email"
+            android:textColor="?attr/textColor" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:background="?attr/bgColorLight">
+
+        <TextView
+            android:id="@+id/textViewPasswordTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reset_password"
+            android:textColor="?attr/textColor"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editSettingPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="?attr/textColor"
+            android:ems="10"
+            android:hint="@string/new_password"
+            android:inputType="textPassword"
+            android:textSize="16sp"
+            android:textColor="?attr/textColor"
+            android:textColorHint="?attr/metaTextColor" />
+
+        <EditText
+            android:id="@+id/editSettingConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="?attr/textColor"
+            android:ems="10"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"
+            android:textSize="16sp"
+            android:textColor="?attr/textColor"
+            android:textColorHint="?attr/metaTextColor" />
+
+        <Button
+            android:id="@+id/btnResetPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/reset_password"
+            android:textColor="?attr/textColor" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutDiet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:background="?attr/bgColorLight">
+
+        <TextView
+            android:id="@+id/textViewDietRestrictionsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dietary_restrictions"
+            android:textColor="?attr/textColor"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinnerDiet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="?attr/textColor"
+            android:backgroundTint="?attr/textColor"
+            android:layout_margin="5dp"/>
+        <TextView
+            android:id="@+id/textViewAllergiesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/allergies_and_intolerances"
+            android:layout_marginVertical="5dp"
+            android:textColor="?attr/textColor"
+            android:textSize="18sp" />
+        <CheckBox
+            android:id="@+id/chkBxPeanuts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/peanuts"
+            android:textColor="?attr/textColor"
+            android:buttonTint="#fff" />
+        <CheckBox
+            android:id="@+id/chkBxTreeNuts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tree_nuts"
+            android:textColor="?attr/textColor"
+            android:buttonTint="#fff" />
+        <CheckBox
+            android:id="@+id/chkBxDairy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dairy"
+            android:textColor="?attr/textColor"
+            android:buttonTint="#fff" />
+        <CheckBox
+            android:id="@+id/chkBxGluten"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gluten_intolerance"
+            android:textColor="?attr/textColor"
+            android:buttonTint="#fff" />
+        <CheckBox
+            android:id="@+id/chkBxShellfish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/shellfish"
+            android:textColor="?attr/textColor"
+            android:buttonTint="#fff" />
+        <CheckBox
+            android:id="@+id/chkBxFish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fish"
+            android:textColor="?attr/textColor"
+            android:buttonTint="#fff" />
+        <CheckBox
+            android:id="@+id/chkBxEggs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/eggs"
+            android:textColor="?attr/textColor"
+            android:buttonTint="#fff" />
+        <CheckBox
+            android:id="@+id/chkBxSoy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/soy"
+            android:textColor="?attr/textColor"
+            android:buttonTint="#fff" />
+        <CheckBox
+            android:id="@+id/chkBxAllergy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/allergy_please_specify"
+            android:textColor="?attr/textColor"
+            android:buttonTint="#fff" />
+
+        <EditText
+            android:id="@+id/editAllergyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="?attr/textColor"
+            android:ems="10"
+            android:hint="@string/allergy"
+            android:inputType="textPersonName"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="16sp"
+            android:textColor="?attr/textColor"
+            android:textColorHint="?attr/metaTextColor" />
+
+        <Button
+            android:id="@+id/btnSaveDiet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Save"
+            android:textColor="?attr/textColor" />
+
+    </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="#fff"
+        app:itemTextColor="#fff"
+        app:menu="@menu/bottom_navigation_menu"
+        />
+</FrameLayout>

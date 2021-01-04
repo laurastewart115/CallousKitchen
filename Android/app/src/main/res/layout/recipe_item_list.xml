@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Author: Laura Stewart -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="10"
+    android:paddingVertical="5dp"
+    android:paddingHorizontal="5dp"
+    android:orientation="horizontal"
+    android:background="?attr/bgColorLight">
+    <LinearLayout
+        android:id="@+id/linearLayoutInner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.7"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="5dp"
+        android:orientation="vertical"
+        android:background="?attr/bgColorLight">
+
+        <TextView
+            android:id="@+id/textViewRecipeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="?attr/textColor"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textViewRecipeYield"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="?attr/textColor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textViewRecipeSource"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="?attr/textColor"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageViewRecipe"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.3"/>
+
+</LinearLayout>

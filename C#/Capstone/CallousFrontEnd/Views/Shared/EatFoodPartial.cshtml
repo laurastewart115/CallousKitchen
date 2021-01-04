@@ -1,0 +1,15 @@
+﻿@*
+    Author: Peter
+*@
+@model AccountService.Food
+@using (Html.BeginForm("EatFood", "User", FormMethod.Post))
+
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.Quantity, htmlAttributes: new { @class = "form-control", @type = "number", @max = Model.Quantity.ToString(), @min = "0" })
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+
+
+}
